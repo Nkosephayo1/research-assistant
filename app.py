@@ -24,7 +24,7 @@ if st.button("Generate Response"):
     else:
         url = "https://api.groq.com/openai/v1/chat/completions"
         headers = {"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"}
-        payload = {"model": GROQ_MODEL, "messages": [{"role": "user", "content": user_input}], "max_tokens": 200}
+        payload = {"model": GROQ_MODEL, "messages": [{"role": "user", "content": user_input}], "max_tokens": 2000}
 
         try:
             response = requests.post(url, json=payload, headers=headers)
@@ -34,3 +34,4 @@ if st.button("Generate Response"):
             st.success(answer)
         except requests.exceptions.RequestException as e:
             st.error(f"Error calling Groq API: {e}")
+
